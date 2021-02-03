@@ -6,6 +6,8 @@ const employeesDb = require("./models/employee");
 
 app.use("/static", express.static("public"));
 app.set("view engine", "ejs");
+
+
 app.use(express.urlencoded({ extended: true }));
 
 //connection to db
@@ -18,23 +20,35 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
 
 // GET METHOD MAIN PAGE
 
-app.get("/", (req, res) => {
+app
+    .route("/")
+    .get((req, res) => {
     employeesDb.find({}, (err, emplo) => {
         res.render("index.ejs");
     });
 });
 
 // GET METHOD EMP PAGE
-
-app.get("/list", (req, res) => {
-    employeesDb.find({}, (err, emplo) => {
-        res.render("employees.ejs", { employees: emplo });
+app
+    .route("/list")
+    .get((req, res) => {
+        employeesDb.find({}, (err, emplo) => {
+            res.render("employees", { employees: emplo });
+        });
     });
-});
+
+
+// app.get("/list", (req, res) => {
+//     employeesDb.find({}, (err, emplo) => {
+//         res.render("employees", { employees: emplo });
+//     });
+// });
 
 //POST METHOD
 
-app.post('/',async (req, res) => {
+app
+    .route("/")
+    .post(async (req, res) => {
     const emp = new employeesDb(
         {fname: req.body.fname,
         lname: req.body.lname,
