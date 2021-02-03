@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<head>
+    <title>APP PR</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/stylesheets/style.css" type="text/css">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <h1 class="display-3">Baza pracownikow by Piotr Rawski</h1>
+    </div>
+    <div class="row">
+        <nav class="navbar navbar-light bg-light">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="/">Dodaj pracownika</a>
+                <a class="navbar-brand" href="/list">Lista pracownikow</a>
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+    <% employees.forEach(details => { %>
+    <div class="row">
+        <div class="accordion accordion-flush" id="accordionFlushExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="flush-headingOne">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="<%= "#" + details.stanowisko %>" aria-expanded="false" aria-controls="<%= details.email %>">
+                        <%= details.fname %> <%= details.lname %>
+                    </button>
+                </h2>
+            </div>
+            <div id="<%= details.stanowisko %>" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+                <div class="accordion-body">
+                    <ul class="list-group">
+                            <li class="list-group-item"><%= details.stanowisko %></li>
+                            <li class="list-group-item"><%= details.phone %></li>
+                            <li class="list-group-item"><%= details.email %></li>
+                            <div class="btn-group me-2" role="group" aria-label="First group">
+                            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="<%= "#" + details.lname %>" onclick="location.href='/edit/<%= details._id %>';">Edytuj</button>
+                            <button type="button" class="btn btn-danger" onclick="location.href='/remove/<%= details._id %>';">Usun</button>
+                        </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <% }) %>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+
+</body>
