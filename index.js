@@ -20,35 +20,31 @@ mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
 
 // GET METHOD MAIN PAGE
 
-app
-    .route("/")
-    .get((req, res) => {
+app.get("/", (req, res) => {
     employeesDb.find({}, (err, emplo) => {
         res.render("index.ejs");
     });
 });
 
 // GET METHOD EMP PAGE
-app
-    .route("/list")
-    .get((req, res) => {
-        employeesDb.find({}, (err, emplo) => {
-            res.render("employees", { employees: emplo });
-        });
-    });
-
-
-// app.get("/list", (req, res) => {
-//     employeesDb.find({}, (err, emplo) => {
-//         res.render("employees", { employees: emplo });
+// app
+//     .route("/list")
+//     .get((req, res) => {
+//         employeesDb.find({}, (err, emplo) => {
+//             res.render("employees", { employees: emplo });
+//         });
 //     });
-// });
+
+
+app.get("/list", (req, res) => {
+    employeesDb.find({}, (err, emplo) => {
+        res.render("employees", { employees: emplo });
+    });
+});
 
 //POST METHOD
 
-app
-    .route("/")
-    .post(async (req, res) => {
+app.post('/',async (req, res) => {
     const emp = new employeesDb(
         {fname: req.body.fname,
         lname: req.body.lname,
