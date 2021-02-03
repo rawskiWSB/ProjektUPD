@@ -13,7 +13,7 @@ mongoose.set("useFindAndModify", false);
 
 mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true }, () => {
     console.log("Polaczony z db!");
-    app.listen(process.env.port | 3000, () => console.log("Dzialam na 3000!"));
+    app.listen(process.env.PORT || 3000, () => console.log("Dzialam na 3000!"));
 });
 
 // GET METHOD MAIN PAGE
