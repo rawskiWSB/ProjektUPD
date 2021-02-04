@@ -1,0 +1,27 @@
+on:
+  push:
+    branches:
+      - main
+
+env:
+  AZURE_WEBAPP_NAME: <nazwa-aplikacji>
+  AZURE_WEBAPP_PACKAGE_PATH: '.'
+  NODE_VERSION: '10.15'
+
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Azure/functions-action@v2
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+      - name: Install dependencies
+        run: |
+          npm install
+      - name: 'Deploy to Azure WebApp'
+        uses: azure/webapps-deploy@v1
+        with:
+          app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
+          package: ${{ env.AZURE_WEBAPP_PACKAGE_PATH }}
