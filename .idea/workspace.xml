@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="e6d9f47a-5344-4a02-a041-f3e226b535ec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.github/workflows/azure.yml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/views/index.ejs" beforeDir="false" afterPath="$PROJECT_DIR$/views/index.ejs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script-app-service.sh" beforeDir="false" afterPath="$PROJECT_DIR$/script-app-service.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/script-cosmodb.sh" beforeDir="false" afterPath="$PROJECT_DIR$/script-cosmodb.sh" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1612192606685</updated>
       <workItem from="1612192607855" duration="25313000" />
-      <workItem from="1612364487310" duration="22560000" />
+      <workItem from="1612364487310" duration="24317000" />
     </task>
     <servers />
   </component>

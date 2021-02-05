@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Replace the following URL with a public GitHub repo URL
 gitrepo=https://github.com/rawskiWSB/ProjektUPD
 webappname=mywebapp$RANDOM
 

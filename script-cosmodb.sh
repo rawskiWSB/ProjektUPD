@@ -21,4 +21,14 @@ az cosmosdb create \
 az cosmosdb mongodb database create \
     -a $accountName \
     -g $resourceGroupName \
-    -n cosmodbPR
+    -n cosmodbPR \
+
+
+COSMOS_DB_CONNECTION_STRING=$(az cosmosdb keys list \
+        -g $resourceGroupName \
+        -n $accountName \
+        --type connection-strings \
+        --query connectionStrings[0].connectionString \
+        --output tsv)
+
+echo $COSMOS_DB_CONNECTION_STRING
